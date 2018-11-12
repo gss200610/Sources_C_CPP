@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Firebird\Firebird_2_5\bin\gfix.exe" -v -full -user SYSDBA -pass "masterkey" D:\CLIENTES\CASA-PRODUTOR\SERVIDOR.FDB
