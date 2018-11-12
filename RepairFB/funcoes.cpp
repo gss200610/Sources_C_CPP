@@ -45,6 +45,9 @@ BOOL execAndWait(std::string arquivo, std::string Params, WORD  WindowState, boo
 	BOOL bSuccess;
 	std::string out = "";
 
+	cout << "arquivo: " << arquivo << endl;
+	cout << "parametros: " << Params << endl;
+
 	Security.nLength = sizeof(SECURITY_ATTRIBUTES);
 	Security.bInheritHandle = true;
 	Security.lpSecurityDescriptor = NULL;
@@ -77,6 +80,8 @@ BOOL execAndWait(std::string arquivo, std::string Params, WORD  WindowState, boo
 		WaitForInputIdle(ProcessInfo.hProcess, INFINITE);
 		CloseHandle(ProcessInfo.hThread);
 
+		CloseHandle(WritePipe);
+
 		WaitForSingleObject(ProcessInfo.hProcess, INFINITE);
 		//CloseHandle(ProcessInfo.hProcess);
 
@@ -86,20 +91,20 @@ BOOL execAndWait(std::string arquivo, std::string Params, WORD  WindowState, boo
 
 			std::string s(ReadBuffer, BytesRead);
 			out += s;
-			break;
+			//break;
 		}
 
+		bSuccess = TRUE;
 
 
 
 	}
 
 	cout << out << endl;
-	
 	CloseHandle(ProcessInfo.hProcess);
-	
+
 	CloseHandle(ReadPipe);
-	CloseHandle(WritePipe);
+
 	
 
 
@@ -110,9 +115,9 @@ BOOL execAndWait(std::string arquivo, std::string Params, WORD  WindowState, boo
 
 BOOL fileExiste(std::string arquivo) {
 	
-	ofstream arq;
+	ifstream arq;
 	uintmax_t tamanho = 0;
-	arq.open(arquivo.c_str());
+	arq.open(arquivo.c_str(), ios::in);
 	if (arq.is_open() ) {
 		arq.close();
 		return true;

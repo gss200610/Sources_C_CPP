@@ -1,4 +1,4 @@
 ﻿  funcoes.cpp
-e:\projects\c++\repairfb\funcoes.cpp(53): warning C4302: 'type cast': truncation from 'void *' to 'CHAR'
+e:\projects\c++\repairfb\funcoes.cpp(56): warning C4302: 'type cast': truncation from 'void *' to 'CHAR'
 e:\projects\c++\repairfb\funcoes.cpp(43): warning C4101: 'Apprunning': unreferenced local variable
   RepairFB.vcxproj -> E:\Projects\C++\RepairFB\Debug\RepairFB.exe
