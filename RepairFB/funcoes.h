@@ -6,28 +6,18 @@
 #include <string>
 #include <Windows.h>
 #include <Shlwapi.h>
-using namespace std;
+#include <minwindef.h>
 
 #pragma warning( disable : 4800 ) // stupid warning about bool
 
-static struct Handles_Processo
-{
-	HANDLE g_hChildStd_OUT_Rd;
-	HANDLE g_hChildStd_OUT_Wr;
-	HANDLE g_hChildStd_ERR_Rd;
-	HANDLE g_hChildStd_ERR_Wr;
-
-}estrutura = { NULL, NULL, NULL, NULL };
 
 
-typedef struct Handles_Processo HProcesso;
 
-std::string getPathFB(); 
+void getPathFB(char**); 
 
-BOOL execAndWait(std::string FileName, std::string Params, WORD  WindowState, bool colocarAspas= FALSE);
-std::wstring s2ws(const std::string& s);
+BOOL execAndWait(char* , char* , WORD, int);
 
-BOOL fileExiste(std::string arquivo);
+BOOL fileExiste(char* arquivo);
 
 
 
